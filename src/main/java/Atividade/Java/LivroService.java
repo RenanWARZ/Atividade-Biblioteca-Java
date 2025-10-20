@@ -13,20 +13,20 @@ public class LivroService {
         this.repo = repo;
     }
 
-    public List<Livro> findAll() {
+    public List<LivroEntity> findAll() {
         return repo.findAll();
     }
 
-    public Optional<Livro> findById(Long id) {
+    public Optional<LivroEntity> findById(Long id) {
         return repo.findById(id);
     }
 
-    public Livro create(Livro b) {
+    public LivroEntity create(LivroEntity b) {
         b.setId(null);
         return repo.save(b);
     }
 
-    public Optional<Livro> update(Long id, Livro b) {
+    public Optional<LivroEntity> update(Long id, LivroEntity b) {
         return repo.findById(id).map(existing -> {
             existing.setTitle(b.getTitle());
             existing.setAuthor(b.getAuthor());

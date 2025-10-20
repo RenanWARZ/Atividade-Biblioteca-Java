@@ -16,23 +16,23 @@ public class LivroController {
     }
 
     @GetMapping
-    public List<Livro> list() {
+    public List<LivroEntity> list() {
         return service.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Livro> get(@PathVariable Long id) {
+    public ResponseEntity<LivroEntity> get(@PathVariable Long id) {
         return service.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<Livro> create(@RequestBody Livro b) {
-        Livro created = service.create(b);
+    public ResponseEntity<LivroEntity> create(@RequestBody LivroEntity b) {
+        LivroEntity created = service.create(b);
         return ResponseEntity.created(URI.create("/api/books/" + created.getId())).body(created);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Livro> update(@PathVariable Long id, @RequestBody Livro b) {
+    public ResponseEntity<LivroEntity> update(@PathVariable Long id, @RequestBody LivroEntity b) {
         return service.update(id, b).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 

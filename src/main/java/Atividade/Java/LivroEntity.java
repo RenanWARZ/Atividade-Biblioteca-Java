@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 
 @Entity
-public class Livro {
+public class LivroEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,9 +21,9 @@ public class Livro {
 
     private String description;
 
-    public Livro() {}
+    public LivroEntity() {}
 
-    public Livro(String title, String author, String isbn, String description) {
+    public LivroEntity(String title, String author, String isbn, String description) {
         this.title = title;
         this.author = author;
         this.isbn = isbn;
