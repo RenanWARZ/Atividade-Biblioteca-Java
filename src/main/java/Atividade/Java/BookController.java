@@ -1,4 +1,4 @@
-package com.example.Atividade.Java;
+package Atividade.Java;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

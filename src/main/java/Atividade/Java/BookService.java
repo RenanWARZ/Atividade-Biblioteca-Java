@@ -1,4 +1,4 @@
-package com.example.Atividade.Java;
+package Atividade.Java;
 
 import java.util.List;
 import java.util.Optional;
