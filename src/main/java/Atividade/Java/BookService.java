@@ -6,27 +6,27 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 @Service
-public class LivroService {
-    private final LivoRepository repo;
+public class BookService {
+    private final BookRepository repo;
 
-    public LivroService(LivoRepository repo) {
+    public BookService(BookRepository repo) {
         this.repo = repo;
     }
 
-    public List<LivroEntity> findAll() {
+    public List<Book> findAll() {
         return repo.findAll();
     }
 
-    public Optional<LivroEntity> findById(Long id) {
+    public Optional<Book> findById(Long id) {
         return repo.findById(id);
     }
 
-    public LivroEntity create(LivroEntity b) {
+    public Book create(Book b) {
         b.setId(null);
         return repo.save(b);
     }
 
-    public Optional<LivroEntity> update(Long id, LivroEntity b) {
+    public Optional<Book> update(Long id, Book b) {
         return repo.findById(id).map(existing -> {
             existing.setTitle(b.getTitle());
             existing.setAuthor(b.getAuthor());

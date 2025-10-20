@@ -8,31 +8,31 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/books")
-public class LivroController {
-    private final LivroService service;
+public class BookController {
+    private final BookService service;
 
-    public LivroController(LivroService service) {
+    public BookController(BookService service) {
         this.service = service;
     }
 
     @GetMapping
-    public List<LivroEntity> list() {
+    public List<Book> list() {
         return service.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<LivroEntity> get(@PathVariable Long id) {
+    public ResponseEntity<Book> get(@PathVariable Long id) {
         return service.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<LivroEntity> create(@RequestBody LivroEntity b) {
-        LivroEntity created = service.create(b);
+    public ResponseEntity<Book> create(@RequestBody Book b) {
+        Book created = service.create(b);
         return ResponseEntity.created(URI.create("/api/books/" + created.getId())).body(created);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<LivroEntity> update(@PathVariable Long id, @RequestBody LivroEntity b) {
+    public ResponseEntity<Book> update(@PathVariable Long id, @RequestBody Book b) {
         return service.update(id, b).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
